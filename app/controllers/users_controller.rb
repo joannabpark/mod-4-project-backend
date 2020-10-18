@@ -1,36 +1,36 @@
 class UsersController < ApplicationController
 
         def index
-            users = User.all 
-            render json: UserSerializer.new(users)
+            @users = User.all 
+            render json: @users
         end
     
         def show
-            user = User.find(params[:id])
-            render json: UserSerializer.new(user)
-        end
-    
-        def new
-            user = User.new
+            @user = User.find(params[:id])
+            render json: @user
         end
     
         def create
-            user = User.create(user_params)
-            render json: UserSerializer.new(user)
-        end
-    
-        def edit
+            @user = User.new(user_params)
+            if @user.save
+                render json: @user
+            else
+                render json: @user.errors
+            end
         end
     
         def update
-            user = User.find(params[:id])
-            user.update(user_params)
-            render json: UserSerializer.new(user)
+            @user = User.find(params[:id])
+            if @user.update
+                render json: @user
+            else    
+                render json: @user.errors
+            end
         end
     
         def destroy
-            user = User.find(params[:id])
-            user.destroy
+            @user = User.find(params[:id])
+            @user.destroy
             render json: { message: 'success'}
         end
     

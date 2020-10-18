@@ -1,36 +1,36 @@
 class NotesController < ApplicationController
 
     def index
-        notes = Note.all 
-        render json: NoteSerializer.new(notes)
+        @notes = Note.all 
+        render json: @notes
     end
 
     def show
-        note = Note.find(params[:id])
-        render json: NoteSerializer.new(note)
-    end
-
-    def new
-        note = Note.new
+        @note = Note.find(params[:id])
+        render json: @note
     end
 
     def create
-        note = Note.create(note_params)
-        render json: NoteSerializer.new(note)
-    end
-
-    def edit
+        @note = Note.new(note_params)
+        if @note.save
+            render json: @note
+        else
+            render json: @note.errors
+        end
     end
 
     def update
-        note = Note.find(params[:id])
-        note.update(note_params)
-        render json: NoteSerializer.new(note)
+        @note = Note.find(params[:id])
+        if @note.update
+            render json: @note
+        else
+            render json: @note.errors
+        end
     end
 
     def destroy
-        note = Note.find(params[:id])
-        note.destroy
+        @note = Note.find(params[:id])
+        @note.destroy
         render json: { message: 'success'}
     end
 
