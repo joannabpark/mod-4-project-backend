@@ -18,6 +18,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 # gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'fast_jsonapi'
+gem 'semantic', '~> 1.4', '>= 1.4.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
