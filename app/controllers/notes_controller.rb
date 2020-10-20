@@ -21,11 +21,8 @@ class NotesController < ApplicationController
 
     def update
         @note = Note.find(params[:id])
-        if @note.update
-            render json: @note
-        else
-            render json: @note.errors
-        end
+        @note.update(note_params)
+        render json: @note
     end
 
     def destroy
