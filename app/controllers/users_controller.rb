@@ -9,6 +9,20 @@ class UsersController < ApplicationController
             @user = User.find(params[:id])
             render json: @user
         end
+
+
+        def login
+
+            user = User.find_by(username: params[:username])
+        
+            if user && user.authenticate(params[:password])
+              render json: user
+            else
+              render json: { error: 'Invalid username or password.'}
+            end
+        
+        
+          end
     
         def create
             @user = User.new(user_params)
