@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 
           def current_session
             token = request.headers[:Authorization].split(' ')[1]
-           
             decoded_token = JWT.decode(token, 'my$ecretK3y', true, { algorithm: 'HS256' })
 
             user_id = decoded_token[0]['user_id']
@@ -38,11 +37,6 @@ class UsersController < ApplicationController
             render json: { user: user }
           end
     
-        # def create
-        #     @user = User.create(user_params)
-        #     render json: @user     
-        # end    
-
         def create
             @user = User.create(user_params)
                 if @user.valid?
