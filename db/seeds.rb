@@ -17,10 +17,10 @@ User.create(username: "jpark", first_name: "JoAnna", last_name: "Park", password
 
 puts "Seeding Notes"
 
-Note.create(title: "First Note", content: Faker::ChuckNorris.fact, user_id: User.first.id)
-Note.create(title: "Second Note", content: Faker::ChuckNorris.fact, user_id: User.first.id)
-Note.create(title: "Third Note", content: Faker::ChuckNorris.fact, user_id: User.first.id)
-Note.create(title: "Fourth Note", content: Faker::ChuckNorris.fact, user_id: User.first.id)
-Note.create(title: "Fifth Note", content: Faker::ChuckNorris.fact, user_id: User.first.id)
+Note.create(title: "First Note", content: Faker::ChuckNorris.fact, favorite: true, user_id: User.first.id)
+Note.create(title: "Second Note", content: Faker::ChuckNorris.fact, favorite: false, user_id: User.first.id)
+Note.create(title: "Third Note", content: Faker::ChuckNorris.fact, favorite: true, user_id: User.first.id)
+Note.create(title: "Fourth Note", content: Faker::ChuckNorris.fact,favorite: false, user_id: User.first.id)
+Note.create(title: "Fifth Note", content: Faker::ChuckNorris.fact, favorite: true, user_id: User.first.id)
 
 puts "Complete!"
